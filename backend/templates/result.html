@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Prediction Result</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Skin Disease Prediction</h1>
+
+    <div class="result">
+
+        <h2>Prediction Result</h2>
+
+        <p><b>Disease:</b> {{ disease }}</p>
+        <p><b>Confidence:</b> {{ confidence }}</p>
+        <p><b>Severity:</b> {{ severity }}</p>
+
+    </div>
+
+    <div class="result">
+
+        <h3>Lifestyle Advice</h3>
+
+        <ul>
+        {% for tip in rec.lifestyle %}
+            <li>{{ tip }}</li>
+        {% endfor %}
+        </ul>
+
+    </div>
+
+    <div class="result">
+
+        <h3>Home Remedies</h3>
+
+        <ul>
+        {% for tip in rec.home_remedies %}
+            <li>{{ tip }}</li>
+        {% endfor %}
+        </ul>
+
+    </div>
+
+    <div class="result">
+
+        <h3>Medical Advice</h3>
+
+        <ul>
+        {% for tip in rec.medical %}
+            <li>{{ tip }}</li>
+        {% endfor %}
+        </ul>
+
+    </div>
+
+    <div class="result">
+
+        <h2>Ask AI Dermatology Assistant</h2>
+
+        <form action="/chat" method="post">
+
+            <input type="text" name="question" placeholder="Ask about your skin condition..." required>
+
+            <button type="submit">Ask</button>
+
+        </form>
+
+    </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Skin Disease Detection</title>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>AI Skin Disease Detection</h1>
+
+<form action="/predict" method="POST" enctype="multipart/form-data">
+
+<div class="upload-box">
+
+<p>Upload Skin Image</p>
+
+<input type="file" name="image" required>
+
+</div>
+
+<button type="submit">Predict Disease</button>
+
+</form>
+
+{% if disease %}
+
+<div class="result">
+
+<h3>Prediction</h3>
+
+<p><b>Disease:</b> {{disease}}</p>
+
+<p><b>Severity:</b> {{severity}}</p>
+
+<p><b>Recommendation:</b> {{rec}}</p>
+
+</div>
+
+<a href="/chat">
+
+<button style="margin-top:15px;">Ask AI Doctor</button>
+
+</a>
+
+{% endif %}
+
+</div>
+
+</body>
+
+</html>
